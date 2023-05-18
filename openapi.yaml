@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: MyEther Plugin
+  description: A plugin that allows the user to get information on an ethereum address using ChatGPT. If you do not know the user's ethereum address, ask them first before making queries to the plugin. Otherwise, use the address "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045".
+  version: 'v1'
+servers:
+  - url: "http://localhost:5003"
+paths:
+  /balance/{address}:
+    get:
+      operationId: getBalance
+      summary: Get balance
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+  /tokenbalance/{address}/{contract_address}:
+    get:
+      operationId: getTokenBalance
+      summary: Get token balance
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: contract_address
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+  /txlist/{address}:
+    get:
+      operationId: getNormalTransactions
+      summary: Get normal transactions
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+  /txlistinternal/{address}:
+    get:
+      operationId: getInternalTransactions
+      summary: Get internal transactions
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+  /tokentx/{address}:
+    get:
+      operationId: getErc20TransferEvents
+      summary: Get ERC20 transfer events
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+  /tokennfttx/{address}:
+    get:
+      operationId: getErc721TransferEvents
+      summary: Get ERC721 transfer events
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+  /getminedblocks/{address}:
+    get:
+      operationId: getMinedBlocks
+      summary: Get mined blocks
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful response
+
